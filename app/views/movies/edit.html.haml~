@@ -10,7 +10,7 @@
   = label :movie, :rating, 'Rating'
   = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
   
-  = label :movie, :director, 'Director'
+  = label :movie, :title, 'Director'
   = text_field :movie, 'director'	
 
   = label :movie, :release_date, 'Released On'

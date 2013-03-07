@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
 	def by_director
-		@director = params[:director]
+		@source_movie = Movie.find(params[:id])
 		sort = params[:sort]
     case sort
     when 'title'
@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     when 'release_date'
       ordering,@date_header = {:order => :release_date}, 'hilite'
     end
-    @movies = Movie.find_all_by_director(@director, ordering)
+    @movies = @source_movie.same_director
   end
 
   def new
