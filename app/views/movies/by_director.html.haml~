@@ -1,5 +1,5 @@
 
-%h1 All Movies Directed by #{@director}
+%h1 All Movies Directed by #{@movies}
 
 
 %table#movies

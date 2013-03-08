@@ -5,8 +5,8 @@ class Movie < ActiveRecord::Base
   end
 	def self.same_director(id)
 		director = Movie.find(id).director
-		if director == nil || director =~ /\s*/
-			return nil
+		if director == nil || director == ""
+			return Movie.find(id).title
 		end
 		Movie.find_all_by_director(director)
 	end
