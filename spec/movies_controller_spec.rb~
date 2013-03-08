@@ -1,0 +1,10 @@
+require 'spec_helper'
+
+describe MoviesController do
+	describe 'searching for movies with the same director' do
+		it 'should call the model method same_director' do
+			movie = FactoryGirl.build(:movie, :title => 'Milk', :rating => 'R', :id => 1, :director => 'sean Bjornsson')
+			post :by_director, {:id => movie.id}
+		end
+	end
+end

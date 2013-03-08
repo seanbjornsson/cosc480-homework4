@@ -1,14 +1,14 @@
 
-%h1 All Movies Directed by #{@director}
+%h1 All Movies Directed by #{@movies}
 
 
 %table#movies
   %thead
     %tr
-      %th{:class => @title_header}= link_to 'Movie Title', by_director_url(:sort => 'title', :id => @id), :id => 'title_header'
+      %th Title
       %th Rating
       %th Director
-      %th{:class => @date_header}= link_to 'Release Date', by_director_url(:sort => 'release_date', :id => @id), :id => 'release_date_header'
+      %th Release Date
       %th More Info
   %tbody
     - @movies.each do |movie|

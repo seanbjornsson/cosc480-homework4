@@ -22,4 +22,6 @@
 = link_to 'Back to movie list', movies_path
 
 <br />
-= link_to 'Find Movies With Same Director', director_path_url(:id => @id, :sort => :title)
+ID that will be passed to same director: #{@id}
+=debugger
+= link_to 'Find Movies With Same Director', director_path_url(:id => @movie.id) , :id=>@movie.id

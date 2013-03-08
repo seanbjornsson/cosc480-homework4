@@ -6,7 +6,6 @@ Given /the following movies exist/ do |movies_table|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
   end
-	Movie.order(:title).each do |x| ; print "title: #{x[:title]}\tdirector: #{x[:director]}\n" ; end
   #flunk "Unimplemented"
 end
 
@@ -38,8 +37,5 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
 end
 
 Then /the director of "(.*)" should be "(.*)"/ do |title, director|
-	
-	Movie.order(:title).each do |x| ; print "title: #{x[:title]}\tdirector: #{x[:director]}\n" ; end
-	#print "title: #{title} director: #{Movie.find_by_title(title)}"
-	#Movie.find_by_title(title).director.should == "#{director}"
+	Movie.find_by_title(title).director.should == "#{director}"
 end

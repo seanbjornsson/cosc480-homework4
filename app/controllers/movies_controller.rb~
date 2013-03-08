@@ -1,22 +1,18 @@
 class MoviesController < ApplicationController
 
   def show
-    id = params[:id] # retrieve movie ID from URI route
-    @movie = Movie.find(id) # look up movie by unique ID
+    @id = params[:id] # retrieve movie ID from URI route
+    @movie = Movie.find(@id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
   end
 
 	def by_director
-		@source_movie = Movie.find(params[:id])
-		sort = params[:sort]
-    case sort
-    when 'title'
-      ordering,@title_header = {:order => :title}, 'hilite'
-    when 'release_date'
-      ordering,@date_header = {:order => :release_date}, 'hilite'
-    end
-    @movies = @source_movie.same_director
-  end
+    @movies = Movie.same_director(params[:id])
+		if	@movies == nil
+			flash[:notice] = "\'#{Movie.find(params[:id])}\' has no director info"
+			redirect_to movies_path
+		end
+ end
 
   def new
     # default: render 'new' template
